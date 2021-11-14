@@ -12,7 +12,7 @@
         props: {
           ...data
         },
-        maxage: 60 * 60 * 24 * 30
+        maxage: 86400 // one day
       }
     }
   }
