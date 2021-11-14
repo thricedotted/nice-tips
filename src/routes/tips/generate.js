@@ -1,4 +1,4 @@
-import { parse } from 'node-html-parser'
+import * as HTMLParser from 'node-html-parser'
 import * as tokenizer from 'sbd'
 
 import { generateHash } from '$lib/util'
@@ -105,8 +105,7 @@ export async function get() {
   while (tips.length + warnings.length === 0) {
     const res = await fetch(WIKIHOW_URL)
     const html = await res.text()
-    console.log('did we fetch?', html)
-    const root = parse(html)
+    const root = HTMLParser.parse(html)
 
     const selectText = divId => root.querySelectorAll(`${divId} ul li > div:first-child`).map(nodeToText)
 
