@@ -71,8 +71,6 @@ const TEMPLATES = {
   ],
   
   suffixes: [
-    ':)', 
-    '<3', 
     'ok?', 
     '*nod*', 
     'trust me.', 
