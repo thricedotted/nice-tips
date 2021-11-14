@@ -1,4 +1,6 @@
-import * as HTMLParser from 'node-html-parser'
+import { parseDocument } from 'htmlparser2'
+import { selectAll } from 'css-select'
+import { textContent, removeElement } from 'domutils'
 import * as tokenizer from 'sbd'
 
 import { generateHash } from '$lib/util'
@@ -83,9 +85,9 @@ const TEMPLATES = {
 
 function nodeToText(node) {
   // remove citations
-  node.querySelectorAll('sup').forEach(node => node.remove())
+  selectAll('sup', node).forEach(removeElement)
 
-  const text = node.textContent.trim()
+  const text = textContent(node).trim()
 
   try {
     return tokenizer.sentences(text)[0]
@@ -105,9 +107,9 @@ export async function get() {
   while (tips.length + warnings.length === 0) {
     const res = await fetch(WIKIHOW_URL)
     const html = await res.text()
-    const root = HTMLParser.parse(html)
+    const root = parseDocument(html)
 
-    const selectText = divId => root.querySelectorAll(`${divId} ul li > div:first-child`).map(nodeToText)
+    const selectText = divId => selectAll(`${divId} ul li > div:first-child`, root).map(nodeToText)
 
     tips = selectText('#tips')
     warnings = selectText('#warnings')
