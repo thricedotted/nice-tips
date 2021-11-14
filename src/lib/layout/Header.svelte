@@ -1,16 +1,5 @@
 <script>
-  const headerChoices = [
-    'says',
-    'advises',
-    'offers',
-    'suggests',
-    'proposes',
-    'recommends',
-    'urges',
-    'insists'
-  ]
-
-  const headerVerb = headerChoices[Math.floor(Math.random() * headerChoices.length)]
+  export let headerVerb
 </script>
 
 <h1>The nice robot {headerVerb}...</h1>

@@ -1,12 +1,23 @@
+<script context="module">
+  export async function load({ fetch }) {
+    const res = await fetch('/tips/header')
+
+    return {
+      props: { headerVerb: await res.text() }
+    }
+  }
+</script>
+
 <script>
   import Header from '$lib/layout/Header.svelte'
   import Nav from '$lib/layout/Nav.svelte'
   import Footer from '$lib/layout/Footer.svelte'
 
+  export let headerVerb
 </script>
 
 <div class="page">
-  <Header />
+  <Header {headerVerb} />
 
   <main>
     <slot></slot>
