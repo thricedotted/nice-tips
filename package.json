@@ -6,13 +6,15 @@
     "build": "svelte-kit build",
     "preview": "svelte-kit preview"
   },
+  "dependencies": {
+    "node-html-parser": "^5.1.0",
+    "sbd": "^1.0.19"
+  },
   "devDependencies": {
     "@sveltejs/kit": "next",
     "@sveltejs/adapter-vercel": "next",
     "dotenv": "^10.0.0",
     "faunadb": "^4.4.1",
-    "node-html-parser": "^5.1.0",
-    "sbd": "^1.0.19",
     "svelte": "^3.42.6"
   },
   "type": "module"
