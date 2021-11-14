@@ -53,7 +53,7 @@
       class="emoji-before"
       type="submit"
       >
-      Save this Nice Tip
+      Save this Tip
     </button>
   </form>
 </Tip>

@@ -26,7 +26,7 @@
       class="emoji-before"
       href="/tips/{ref}"
       title="Saved on {new Date(ts / 1000).toLocaleString()}"
-      >Link to this Nice Tip
+      >Link to this Tip
     </a>
     {:else}
       <slot></slot>

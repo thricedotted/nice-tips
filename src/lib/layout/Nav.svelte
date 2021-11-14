@@ -8,7 +8,7 @@
       <a 
         class="emoji-before generate"
         href="/"
-        >Generate new Tip
+        >Get new Tip
       </a>
     </li>
 
