@@ -31,7 +31,8 @@ async function getDocument(id) {
   return {
     ts,
     ref: ref.id,
-    ...data
+    url: data.url,
+    text: data.text
   }
 }
 
@@ -76,7 +77,8 @@ async function getAllDocuments({
       return { 
         ts,
         ref: ref.id,
-        ...data
+        url: data.url,
+        text: data.text
       }
     })
   }
