@@ -2,7 +2,7 @@
   export let headerVerb
 </script>
 
-<h1>The nice robot {headerVerb}...</h1>
+<h1><a href="/">The nice robot {headerVerb}...</a></h1>
 
 <style>
   h1 {
@@ -17,5 +17,13 @@
   h1::before {
     content: '🤖';
     padding-right: var(--gap);
+  }
+
+  a, a:hover, a:focus {
+    box-shadow: none;
+  }
+
+  a:hover, a:focus {
+    text-decoration: underline;
   }
 </style>
