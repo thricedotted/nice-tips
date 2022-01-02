@@ -7,8 +7,8 @@ const config = {
 		target: 'body',
 
 		// that's right! no JS!!! smiling imp emoji!!!
-		router: false,
-		hydrate: false,
+		// router: false,
+		// hydrate: false,
 
 		adapter: vercel()
 	}

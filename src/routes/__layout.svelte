@@ -25,7 +25,21 @@
   import Nav from '$lib/layout/Nav.svelte'
   import Footer from '$lib/layout/Footer.svelte'
 
-  export let headerVerb
+  // export let headerVerb
+  
+  const headerChoices = [
+    'says',
+    'advises',
+    'offers',
+    'suggests',
+    'proposes',
+    'recommends',
+    'urges',
+    'insists'
+  ]
+
+  $: headerVerb = headerChoices[Math.floor(Math.random() * headerChoices.length)]
+
 </script>
 
 <div class="page">

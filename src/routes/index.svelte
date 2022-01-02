@@ -24,7 +24,6 @@
 <Tip 
   {text}
   {url}
-  header={true}
   >
   <form 
     method="POST"

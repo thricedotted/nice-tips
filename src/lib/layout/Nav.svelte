@@ -7,7 +7,8 @@
     <li>
       <a 
         class="emoji-before generate"
-        href="/"
+        href="/new"
+        rel="external"
         >Get new Tip
       </a>
     </li>
@@ -15,7 +16,7 @@
     <li>
       <a 
         class="emoji-before random"
-        href="/tips/random"
+        href="/random"
         >Jump to random Tip
       </a>
     </li>
