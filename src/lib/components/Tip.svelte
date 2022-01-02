@@ -1,5 +1,6 @@
 <script>
   export let ref = undefined
+  export let hash = undefined
   export let ts = Date.now() * 1000
   export let text, url 
 
@@ -28,7 +29,36 @@
       >Link to this Tip
     </a>
     {:else}
-      <slot></slot>
+      <form 
+        method="POST"
+        action="/tips/save"
+        >
+
+        <input
+          type="hidden"
+          name="text"
+          value={text}
+        />
+
+        <input
+          type="hidden"
+          name="url"
+          value={url}
+        />
+
+        <input
+          type="hidden"
+          name="hash"
+          value={hash}
+        />
+
+        <button 
+          class="emoji-before"
+          type="submit"
+          >
+          Save this Tip
+        </button>
+      </form>
     {/if}
   </div>
 </div>

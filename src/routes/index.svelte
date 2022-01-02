@@ -24,35 +24,5 @@
 <Tip 
   {text}
   {url}
-  >
-  <form 
-    method="POST"
-    action="/tips/save"
-    >
-
-    <input
-      type="hidden"
-      name="text"
-      value={text}
-    />
-
-    <input
-      type="hidden"
-      name="url"
-      value={url}
-    />
-
-    <input
-      type="hidden"
-      name="hash"
-      value={hash}
-    />
-
-    <button 
-      class="emoji-before"
-      type="submit"
-      >
-      Save this Tip
-    </button>
-  </form>
-</Tip>
+  {hash}
+/>
