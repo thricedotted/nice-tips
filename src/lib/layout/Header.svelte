@@ -2,7 +2,7 @@
   import { session } from '$app/stores'
 </script>
 
-<h1><a href="/">The nice robot {$session.headerVerb}...</a></h1>
+<h1><a href="/new" rel="external">The nice robot {$session.headerVerb}...</a></h1>
 
 <style>
   h1 {
