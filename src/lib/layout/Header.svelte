@@ -2,7 +2,14 @@
   import { session } from '$app/stores'
 </script>
 
-<h1><a href="/new" rel="external">The nice robot {$session.headerVerb}...</a></h1>
+<h1>
+  <a 
+    href="/new" 
+    rel="external"
+    >
+    The nice robot {$session.headerVerb}...
+  </a>
+</h1>
 
 <style>
   h1 {
@@ -20,10 +27,11 @@
   }
 
   a, a:hover, a:focus {
-    box-shadow: none;
+    box-shadow: inset 0 0 var(--fg-color-lighter);
+    transition: none;
   }
 
   a:hover, a:focus {
-    text-decoration: underline;
+    box-shadow: inset 0 -0.15em var(--fg-color-lighter);
   }
 </style>
