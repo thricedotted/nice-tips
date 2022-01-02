@@ -21,7 +21,7 @@
       </a>
     </li>
 
-    {#if $page.path !== '/tips'}
+    {#if $page.url.pathname !== '/tips'}
     <li>
       <a 
         class="emoji-before all"

@@ -7,15 +7,15 @@
     "preview": "svelte-kit preview"
   },
   "devDependencies": {
-    "@sveltejs/adapter-vercel": "next",
-    "@sveltejs/kit": "next",
-    "css-select": "^4.1.3",
+    "@sveltejs/adapter-vercel": "^1.0.0-next.34",
+    "@sveltejs/kit": "^1.0.0-next.213",
+    "css-select": "^4.2.1",
     "domutils": "^2.8.0",
     "dotenv": "^10.0.0",
     "faunadb": "^4.4.1",
     "htmlparser2": "^7.2.0",
     "sbd": "^1.0.19",
-    "svelte": "^3.42.6"
+    "svelte": "^3.44.3"
   },
   "type": "module"
 }

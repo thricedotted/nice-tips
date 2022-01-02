@@ -1,6 +1,5 @@
 <script context="module">
-  export async function load({ fetch, page }) {
-    const { params } = page
+  export async function load({ fetch, params }) {
     const { ref } = params
 
     const res = await fetch(`/tips/${ref}.json`)
