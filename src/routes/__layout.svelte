@@ -1,9 +1,21 @@
 <script context="module">
-  export async function load({ fetch }) {
-    const res = await fetch('/tips/header')
+  export async function load() {
+
+    const headerChoices = [
+      'says',
+      'advises',
+      'offers',
+      'suggests',
+      'proposes',
+      'recommends',
+      'urges',
+      'insists'
+    ]
+
+    const headerVerb = headerChoices[Math.floor(Math.random() * headerChoices.length)]
 
     return {
-      props: { headerVerb: await res.text() }
+      props: { headerVerb }
     }
   }
 </script>
