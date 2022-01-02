@@ -3,8 +3,7 @@
   export let ts = Date.now() * 1000
   export let text, url 
 
-  const wikihowTitle = `How to ${decodeURI(url).split('/').pop().replace(/-/g, ' ')}`
-
+  $: wikihowTitle = `How to ${decodeURI(url).split('/').pop().replace(/-/g, ' ')}`
 </script>
 
 <div class="tip">
