@@ -1,4 +1,6 @@
 <script>
+  import '$lib/css/global.css'
+
   import Header from '$lib/layout/Header.svelte'
   import Nav from '$lib/layout/Nav.svelte'
   import Footer from '$lib/layout/Footer.svelte'
@@ -24,5 +26,4 @@
     font-size: var(--font-l);
     max-width: 40ch;
   }
-
 </style>

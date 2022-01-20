@@ -1,6 +1,6 @@
 <footer>
   <details>
-    <summary class="emoji-before">About the nice robot</summary>
+    <summary data-emoji-before="ℹ️">About the nice robot</summary>
 
     <dl>
       <dt>What's this now?</dt>
@@ -38,7 +38,6 @@
   }
 
   summary {
-    --emoji: 'ℹ️';
     --link-accent-color: #ccc;
   }
 

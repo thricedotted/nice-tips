@@ -9,6 +9,7 @@
         class="emoji-before generate"
         href="/new"
         rel="external"
+        data-emoji-before="⚡"
         >Get new Tip
       </a>
     </li>
@@ -17,6 +18,7 @@
       <a 
         class="emoji-before random"
         href="/random"
+        data-emoji-before="🔀"
         >Jump to random Tip
       </a>
     </li>
@@ -26,7 +28,8 @@
       <a 
         class="emoji-before all"
         href="/tips"
-        >See all Tips
+        data-emoji-before="📜"
+        >Browse Tip archive
       </a>
     </li>
     {/if}
@@ -46,19 +49,16 @@
     margin-bottom: var(--big-gap);
   }
 
-  .emoji-before.generate {
+  .generate {
     font-weight: bold;
-    --emoji: '⚡';
     --link-accent-color: gold;
   }
 
-  .emoji-before.random {
-    --emoji: '🔀';
+  .random {
     --link-accent-color: skyblue;
   }
 
-  .emoji-before.all {
-    --emoji: '📜';
+  .all {
     --link-accent-color: burlywood;
   }
 </style>

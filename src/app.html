@@ -10,72 +10,8 @@
 		<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"> 
 
 		%svelte.head%
-
-		<style>
-			*, *::before, *::after {
-				box-sizing: border-box;
-			}
-
-			:root {
-				--bg-color: #fafafa;
-				--fg-color: #333;
-				--fg-color-light: #777;
-				--fg-color-lighter: #ccc;
-				--link-accent-color: gold;
-
-				font-family: 'Space Mono', monospace;
-				font-size: calc(1rem + 0.5vw);
-				font-variant-ligatures: none;
-    		line-height: 1.4;
-
-				--font-xs: 0.6rem;
-				--font-s: 0.75rem;
-				--font-m: 1rem;
-				--font-l: 1.25rem;
-
-				--bigger-gap: 1.4rem;
-				--big-gap: 1rem;
-				--gap: 0.4rem;
-				--shim: 0.2rem;
-
-			}
-
-			body {
-				background-color: var(--bg-color);
-				color: var(--fg-color);
-
-				padding: 2vw;
-			}
-
-			a, button, summary {
-				all: unset;
-				cursor: pointer;
-				padding: 0;
-
-				color: inherit;
-				font-weight: inherit;
-				box-shadow: inset 0 -0.3em var(--link-accent-color);
-				transition: box-shadow 100ms;
-			}
-
-			a:hover, button:hover, summary:hover {
-				box-shadow: inset 0 -1.5em var(--link-accent-color);
-			}
-
-			a:focus, button:focus, summary:focus {
-				outline: solid;
-			} 
-
-			.emoji-before::before {
-				content: var(--emoji, '???');
-				background: var(--bg-color);
-				font-size: var(--font-s);
-				font-style: normal;
-				padding-right: var(--gap);
-			}
-
-		</style>
 	</head>
+
 	<body>
 		%svelte.body%
 	</body>

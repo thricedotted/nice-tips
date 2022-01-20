@@ -12,10 +12,10 @@
 
   <div class="source">
     <a 
-      class="emoji-before"
       href="{url}"
       title="Open the source article &ldquo;{wikihowTitle}&rdquo; on wikiHow"
       target="_blank"
+      data-emoji-before="📖"
       >{wikihowTitle}
     </a>
   </div>
@@ -23,9 +23,9 @@
   <div class="ref">
     {#if ref}
     <a 
-      class="emoji-before"
       href="/tips/{ref}"
       title="Saved on {new Date(ts / 1000).toLocaleString()}"
+      data-emoji-before="🔗"
       >Link to this Tip
     </a>
     {:else}
@@ -53,8 +53,8 @@
         />
 
         <button 
-          class="emoji-before"
           type="submit"
+          data-emoji-before="💖"
           >
           Save this Tip
         </button>
@@ -80,7 +80,7 @@
     font-size: var(--font-s);
     font-style: italic;
     color: var(--fg-color-light);
-    --emoji: '📖';
+    --emoji: ;
   }
 
   .source a {
@@ -99,13 +99,11 @@
     color: var(--fg-color);
   }
 
-  .ref :global(button) {
+  .ref button {
     --link-accent-color: pink;
-    --emoji: '💖';
   }
 
   .ref a {
     --link-accent-color: gainsboro;
-    --emoji: '🔗';
   }
 </style>

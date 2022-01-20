@@ -40,8 +40,8 @@
 
 {#if after}
 <button
-  class="emoji-before"
   on:click={loadNextPage}
+  data-emoji-before='➕'
   >
   Load more Tips
 </button>
@@ -49,10 +49,10 @@
 
 <style>
   button {
-    --emoji: '➕';
     --link-accent-color: burlywood;
     font-weight: bold;
     font-size: var(--font-s);
   }
+
 </style>
 
