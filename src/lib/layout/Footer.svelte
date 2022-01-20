@@ -13,10 +13,13 @@
       </dd>
 
       <dt>What's the tech?</dt>
-      <dd>This site is built with <a href="https://kit.svelte.dev">SvelteKit</a> and deployed on <a href="https://vercel.com">Vercel</a>. Saved tips are stored using a <a href="https://fauna.com">Fauna DB</a> backend. If you're interested, you can check out the code on <a href="https://github.com/thricedotted/nice-tips">GitHub</a>.</dd>
+      <dd>This site is built with <a href="https://kit.svelte.dev">SvelteKit</a> and deployed on <a href="https://vercel.com">Vercel</a>. Saved tips are stored in <a href="https://fauna.com">Fauna DB</a>. If you're interested, you can take a look at the code on <a href="https://github.com/thricedotted/nice-tips">GitHub</a>.</dd>
 
       <dt>Who made this?</dt>
-      <dd>Me! I'm li zi, aka <a href="https://twitter.com/thricedotted">@thricedotted</a>. If you like Nice Tips Bot, check out some of my other generative text toys.</dd>
+      <dd>
+        Me! I'm li zi, aka <a href="https://twitter.com/thricedotted">@thricedotted</a>. 
+        <!-- If you like Nice Tips Bot, check out some of my other generative text toys. -->
+      </dd>
     </dl>
 
   </details>
