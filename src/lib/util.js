@@ -15,7 +15,23 @@ function getHeaderVerb() {
   ])
 }
 
+function wikihowUrlToTitle(url) {
+  return `How to ${decodeURI(url).split('/').pop().replace(/-/g, ' ')}`
+}
+
+function tsToLocaleString(ts) {
+  return new Date(ts / 1000).toLocaleString([], {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit'
+  })
+}
+
 export {
   choice,
-  getHeaderVerb
+  getHeaderVerb,
+  wikihowUrlToTitle,
+  tsToLocaleString
 }

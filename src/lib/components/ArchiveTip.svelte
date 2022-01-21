@@ -1,17 +1,12 @@
 <script>
+  import { wikihowUrlToTitle, tsToLocaleString } from '$lib/util'
+
   export let ref
   export let ts
   export let text, url 
 
-  $: wikihowTitle = `How to ${decodeURI(url).split('/').pop().replace(/-/g, ' ')}`
-
-  $: savedAt = new Date(ts / 1000).toLocaleString([], {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-    hour: 'numeric',
-    minute: '2-digit'
-  })
+  $: wikihowTitle = wikihowUrlToTitle(url)
+  $: savedAt = tsToLocaleString(ts)
 </script>
 
 <div class="tip">
