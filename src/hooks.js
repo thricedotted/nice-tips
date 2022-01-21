@@ -1,16 +1,7 @@
-export function getSession() {
-  const headerChoices = [
-    'says',
-    'advises',
-    'offers',
-    'suggests',
-    'proposes',
-    'recommends',
-    'urges',
-    'insists'
-  ]
+import { getHeaderVerb } from '$lib/util'
 
+export function getSession() {
   return {
-    headerVerb: headerChoices[Math.floor(Math.random() * headerChoices.length)]
+    headerVerb: getHeaderVerb()
   } 
 }

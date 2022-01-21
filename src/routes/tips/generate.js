@@ -3,7 +3,8 @@ import { selectAll } from 'css-select'
 import { textContent, removeElement } from 'domutils'
 import * as tokenizer from 'sbd'
 
-import { generateHash } from '$lib/util'
+import { generateHash } from '$lib/crypto'
+import { choice } from '$lib/util'
 
 const WIKIHOW_URL = 'http://www.wikihow.com/Special:Randomizer'
 
@@ -95,10 +96,6 @@ function nodeToText(node) {
   }
 }
 
-function pickRandom(arr) {
-  return arr[Math.floor(Math.random() * arr.length)]
-}
-
 export async function get() {
   let url = '', tips = [], warnings = []
 
@@ -118,14 +115,14 @@ export async function get() {
   let advice = ''
 
   if (warnings.length === 0 || (tips.length > 0 && Math.random() < 0.9)) {
-    advice = `${pickRandom(TEMPLATES.tips)} ${pickRandom(tips)}`.toLowerCase()
+    advice = `${choice(TEMPLATES.tips)} ${choice(tips)}`.toLowerCase()
   }
   else {
-    advice = `${pickRandom(TEMPLATES.warnings)} ${pickRandom(warnings)}`.toLowerCase()
+    advice = `${choice(TEMPLATES.warnings)} ${choice(warnings)}`.toLowerCase()
   }
 
   if (Math.random() < 0.3) {
-    advice = `${advice} ${pickRandom(TEMPLATES.suffixes)}`
+    advice = `${advice} ${choice(TEMPLATES.suffixes)}`
   }
 
   return {

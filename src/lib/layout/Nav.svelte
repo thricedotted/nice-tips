@@ -1,4 +1,5 @@
 <script>
+  import { getHeaderVerb } from '$lib/util'
   import { page, session } from '$app/stores'
 </script>
 
@@ -10,7 +11,7 @@
         class="generate"
         href="/"
         data-emoji-before="⚡"
-        on:click={() => $session.refresh = Date.now()}
+        on:click={() => $session.headerVerb = getHeaderVerb()}
         >Get new Tip
       </a>
     </li>

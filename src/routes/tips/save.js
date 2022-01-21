@@ -1,5 +1,5 @@
 import { createDocument } from '$lib/db'
-import { verifyHash } from '$lib/util'
+import { verifyHash } from '$lib/crypto'
 
 export async function post({ body }) {
   const { text, url, hash } = Object.fromEntries(body)

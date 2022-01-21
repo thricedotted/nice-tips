@@ -1,11 +1,12 @@
 <script>
   import { session } from '$app/stores'
+  import { getHeaderVerb } from '$lib/util'
 </script>
 
 <h1>
   <a 
     href="/" 
-    on:click={() => $session.refresh = Date.now()}
+    on:click={() => $session.headerVerb = getHeaderVerb()}
     >
     The nice robot {$session.headerVerb}...
   </a>
