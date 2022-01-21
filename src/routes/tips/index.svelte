@@ -11,11 +11,8 @@
   }
 </script>
 
-<svelte:head>
-  <title>Nice Tips Bot</title>
-</svelte:head>
-
 <script>
+  import Layout from '$lib/layout/Layout.svelte'
   import TipPage from '$lib/components/TipPage.svelte'
 
   export let pages = []
@@ -32,27 +29,68 @@
   }
 </script>
 
-{#each pages as { docs }}
-  <TipPage
-    {docs}
-  />
-{/each}
+<svelte:head>
+  <title>Nice Tips Archive</title>
+</svelte:head>
 
-{#if after}
-<button
-  on:click={loadNextPage}
-  data-emoji-before='➕'
-  >
-  Load more Tips
-</button>
-{/if}
+<Layout wide={true}>
+  <div class="welcome">
+    <p>
+      Welcome to the Tip archive!
+      Whenever somebody <span class="saves">saves</span> a Tip, I bring it here for safekeeping.
+    </p>
+  </div>
+
+  <div class="archive">
+    {#each pages as { docs }}
+      <TipPage
+        {docs}
+      />
+    {/each}
+  </div>
+
+  {#if after}
+  <button
+    on:click={loadNextPage}
+    data-emoji-before='➕'
+    >
+    Load more Tips
+  </button>
+  {/if}
+</Layout>
 
 <style>
+  .welcome {
+    position: relative;
+    font-size: var(--font-s);
+    background: #eee;
+    padding: var(--big-gap);
+    margin-top: var(--big-gap);
+  }
+
+  .welcome p {
+    margin: 0;
+  }
+
+  .welcome::before {
+    content: ' ';
+    position: absolute;
+    top: -0.4rem;
+    left: 1px;
+    background: inherit;
+    width: 1rem;
+    height: 1rem;
+    clip-path: polygon(50% 0, 0 50%, 100% 50%);
+  }
+
+  .saves::before, .saves::after {
+    content: "💖";
+  }
+
   button {
     --link-accent-color: burlywood;
     font-weight: bold;
     font-size: var(--font-s);
   }
-
 </style>
 

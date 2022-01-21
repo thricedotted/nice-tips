@@ -1,22 +1,23 @@
 <script>
-  import { page } from '$app/stores'
+  import { page, session } from '$app/stores'
 </script>
 
 <nav>
   <ul>
     <li>
+      <!-- see src/routes/index.svelte for why this click handler is here -->
       <a 
-        class="emoji-before generate"
-        href="/new"
-        rel="external"
+        class="generate"
+        href="/"
         data-emoji-before="⚡"
+        on:click={() => $session.refresh = Date.now()}
         >Get new Tip
       </a>
     </li>
 
     <li>
       <a 
-        class="emoji-before random"
+        class="random"
         href="/random"
         data-emoji-before="🔀"
         >Jump to random Tip
@@ -26,7 +27,7 @@
     {#if $page.url.pathname !== '/tips'}
     <li>
       <a 
-        class="emoji-before all"
+        class="all"
         href="/tips"
         data-emoji-before="📜"
         >Browse Tip archive

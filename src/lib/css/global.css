@@ -51,10 +51,21 @@ a:focus, button:focus, summary:focus {
   outline: solid;
 } 
 
-[data-emoji-before]::before {
-  content: attr(data-emoji-before);
-  background: var(--bg-color);
+
+[data-emoji-before]::before,
+[data-emoji-after]::after {
+  /* background: var(--bg-color); */
+  background: inherit;
   font-size: var(--font-s);
   font-style: normal;
+}
+
+[data-emoji-before]::before {
+  content: attr(data-emoji-before);
   padding-right: var(--gap);
+}
+
+[data-emoji-after]::after {
+  content: attr(data-emoji-after);
+  padding-left: var(--gap);
 }

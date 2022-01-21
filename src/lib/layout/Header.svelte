@@ -4,8 +4,8 @@
 
 <h1>
   <a 
-    href="/new" 
-    rel="external"
+    href="/" 
+    on:click={() => $session.refresh = Date.now()}
     >
     The nice robot {$session.headerVerb}...
   </a>

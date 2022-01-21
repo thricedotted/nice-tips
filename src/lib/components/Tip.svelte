@@ -5,6 +5,14 @@
   export let text, url 
 
   $: wikihowTitle = `How to ${decodeURI(url).split('/').pop().replace(/-/g, ' ')}`
+
+  $: savedAt = new Date(ts / 1000).toLocaleString([], {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit'
+  })
 </script>
 
 <div class="tip">
@@ -24,10 +32,17 @@
     {#if ref}
     <a 
       href="/tips/{ref}"
-      title="Saved on {new Date(ts / 1000).toLocaleString()}"
       data-emoji-before="🔗"
-      >Link to this Tip
+      >
+      Link to this Tip
     </a>
+
+    <time
+      datetime={new Date(ts / 1000).toISOString()}
+      data-emoji-before="📅"
+      >
+      {savedAt}
+    </time>
     {:else}
       <form 
         method="POST"
@@ -61,6 +76,7 @@
       </form>
     {/if}
   </div>
+
 </div>
 
 <style>
@@ -95,8 +111,17 @@
   .ref {
     margin-top: var(--bigger-gap);
     font-size: var(--font-s);
-    font-weight: bold;
     color: var(--fg-color);
+
+    display: flex;
+    flex-flow: row wrap;
+    gap: var(--gap);
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .ref button, .ref a {
+    font-weight: bold;
   }
 
   .ref button {
@@ -105,5 +130,12 @@
 
   .ref a {
     --link-accent-color: gainsboro;
+  }
+
+  time {
+    display: block; 
+    font-size: var(--font-xs);
+    color: var(--fg-color-light);
+    cursor: default;
   }
 </style>
