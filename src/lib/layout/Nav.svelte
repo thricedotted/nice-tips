@@ -1,6 +1,9 @@
 <script>
-  import { getHeaderVerb } from '$lib/util'
-  import { page, session } from '$app/stores'
+  import { createEventDispatcher } from 'svelte'
+
+  import { page } from '$app/stores'
+
+  const dispatch = createEventDispatcher()
 </script>
 
 <nav>
@@ -11,7 +14,7 @@
         class="generate"
         href="/"
         data-emoji-before="⚡"
-        on:click={() => $session.headerVerb = getHeaderVerb()}
+        on:click={() => dispatch('generate')}
         >Get new Tip
       </a>
     </li>

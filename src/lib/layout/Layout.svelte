@@ -7,13 +7,13 @@
 </script>
 
 <div class="page" class:wide>
-  <Header />
+  <Header on:generate />
 
   <main>
     <slot></slot>
   </main>
 
-  <Nav />
+  <Nav on:generate />
 
   <Footer />
 </div>

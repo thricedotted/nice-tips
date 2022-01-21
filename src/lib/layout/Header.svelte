@@ -1,12 +1,15 @@
 <script>
+  import { createEventDispatcher } from 'svelte'
+
   import { session } from '$app/stores'
-  import { getHeaderVerb } from '$lib/util'
+
+  const dispatch = createEventDispatcher()
 </script>
 
 <h1>
   <a 
     href="/" 
-    on:click={() => $session.headerVerb = getHeaderVerb()}
+    on:click={() => dispatch('generate')}
     >
     The nice robot {$session.headerVerb}...
   </a>
