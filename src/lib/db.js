@@ -63,7 +63,7 @@ async function getAllDocuments({
         { 
           before: queryBefore ? Ref(Collection('tips'), queryBefore) : undefined,
           after: queryAfter ? Ref(Collection('tips'), queryAfter) : undefined,
-          size: 100,
+          size: 5,
         }
       ),
       Lambda("tip", Get(Var("tip")))
