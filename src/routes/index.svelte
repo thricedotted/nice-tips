@@ -16,6 +16,10 @@
   import Tip from '$lib/components/Tip.svelte'
 
   export let text, url, hash
+
+  async function generate() {
+    ({ props: { text, url, hash }} = await load({ fetch }))
+  }
 </script>
 
 <svelte:head>
@@ -23,14 +27,11 @@
 </svelte:head>
 
 <Layout
-  on:generate={async () => ({ props: { text, url, hash }} = await load({ fetch }))}
+  on:generate={generate}
   >
-  <div
-    >
-    <Tip 
-      {text}
-      {url}
-      {hash}
-    />
-  </div>
+  <Tip 
+    {text}
+    {url}
+    {hash}
+  />
 </Layout>
