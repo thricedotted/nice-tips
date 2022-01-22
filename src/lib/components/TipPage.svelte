@@ -1,10 +1,10 @@
 <script>
   import ArchiveTip from '$lib/components/ArchiveTip.svelte'
 
-  export let docs
+  export let tips
 </script>
 
-{#each docs as { text, ts, url, ref } (ref)}
+{#each tips as { text, ts, url, ref } (ref)}
   <ArchiveTip
     {text}
     {ts}

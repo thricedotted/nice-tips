@@ -1,11 +1,13 @@
-import { getAllDocuments } from '$lib/db'
+import { getDocumentsByMonthYear } from '$lib/db'
 
 export async function get({ url }) {
   const { searchParams } = url
-  const docs = await getAllDocuments({
-    queryBefore: searchParams.get('before'),
-    queryAfter: searchParams.get('after'),
+
+  const docs = await getDocumentsByMonthYear({
+    month: parseInt(searchParams.get('month')),
+    year: parseInt(searchParams.get('year')),
   })
+
   return {
     body: docs
   }

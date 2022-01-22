@@ -14,6 +14,7 @@ import {
   Filter,
   GT,
   Match,
+  Range
 } from 'faunadb/src/query'
 
 import { FAUNA_SECRET } from '$lib/env'
@@ -48,6 +49,23 @@ async function createDocument({ text, url }) {
     ts,
     ref: ref.id,
     ...data
+  }
+}
+
+async function getDocumentsByMonthYear({ month, year }) {
+  const start = new Date(year, month - 1).getTime() * 1000
+  const end = new Date(year, month).getTime() * 1000
+
+  const result = await db.query(
+    Paginate(
+      Range(Match(Index('time-id')), start, end)
+    )
+  )
+
+  return {
+    tips: result.data.map(
+      ([ ts, ref, text, url ]) => { return { ts, ref, text, url } }
+    )
   }
 }
 
@@ -92,14 +110,15 @@ async function getRandomDocumentId() {
         ["random", "ref"],
         GT(Var("random"), Math.random())
       )
-    )
-  ))
+    ))
+  )
   return ref.id
 }
 
 export {
   getDocument,
   createDocument,
+  getDocumentsByMonthYear,
   getAllDocuments,
   getRandomDocumentId
 }
