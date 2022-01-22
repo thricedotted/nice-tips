@@ -1,20 +1,16 @@
 <script>
-  import { createEventDispatcher } from 'svelte'
-
+  import { invalidate } from '$app/navigation'
   import { page } from '$app/stores'
-
-  const dispatch = createEventDispatcher()
 </script>
 
 <nav>
   <ul>
     <li>
-      <!-- see src/routes/index.svelte for why this click handler is here -->
       <a 
         class="generate"
         href="/"
         data-emoji-before="⚡"
-        on:click={() => dispatch('generate')}
+        on:click={() => invalidate('/tips/generate')}
         >Get new Tip
       </a>
     </li>

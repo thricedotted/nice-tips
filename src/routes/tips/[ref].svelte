@@ -18,7 +18,6 @@
 </script>
 
 <script>
-  import Layout from '$lib/layout/Layout.svelte'
   import Tip from '$lib/components/Tip.svelte'
 
   export let ref, text, ts, url
@@ -28,11 +27,9 @@
   <title>&ldquo;{text}&rdquo; &mdash; Nice Tips Bot</title>
 </svelte:head>
 
-<Layout>
-  <Tip 
-    {ref}
-    {text}
-    {ts}
-    {url}
-  />
-</Layout>
+<Tip 
+  {ref}
+  {text}
+  {ts}
+  {url}
+/>
