@@ -21,14 +21,18 @@
   </p>
 
   <div class="meta">
-    <div class="source">
-      <a 
-        href="{url}"
-        title="Open the source article &ldquo;{wikihowTitle}&rdquo; on wikiHow"
-        target="_blank"
-        data-emoji-before="📖"
-        >{wikihowTitle}
-      </a>
+    <div 
+      class="source"
+      data-emoji-before="📖"
+      >
+      <span>
+        <a 
+          href="{url}"
+          title="Open the source article &ldquo;{wikihowTitle}&rdquo; on wikiHow"
+          target="_blank"
+          >{wikihowTitle}
+        </a>
+      </span>
     </div>
 
     <time 
@@ -86,6 +90,11 @@
     margin-top: var(--gap);
     cursor: default;
     font-size: var(--font-xs);
+  }
+
+  .source {
+    display: flex;
+    align-items: baseline;
   }
 
   .source a {

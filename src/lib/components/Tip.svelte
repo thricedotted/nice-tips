@@ -13,14 +13,18 @@
 <div class="tip">
   <p>{text}</p>
 
-  <div class="source">
-    <a 
+  <div 
+    class="source"
+    data-emoji-before="📖"
+    >
+    <span>
+      <a 
       href="{url}"
       title="Open the source article &ldquo;{wikihowTitle}&rdquo; on wikiHow"
       target="_blank"
-      data-emoji-before="📖"
       >{wikihowTitle}
-    </a>
+      </a>
+    </span>
   </div>
 
   <div class="ref">
@@ -91,7 +95,8 @@
     font-size: var(--font-s);
     font-style: italic;
     color: var(--fg-color-light);
-    --emoji: ;
+
+    display: flex;
   }
 
   .source a {
