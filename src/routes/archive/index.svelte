@@ -1,6 +1,11 @@
 <script context="module">
   export async function load({ fetch }) {
-    const res = await fetch('/tips/history.json')
+    const searchParams = new URLSearchParams({
+      month: new Date().getMonth() + 1,
+      year: new Date().getFullYear()
+    })
+
+    const res = await fetch(`/tips/history.json?${searchParams}`)
     const data = await res.json()
 
     return {
@@ -12,7 +17,6 @@
 </script>
 
 <script>
-  import Layout from '$lib/layout/Layout.svelte'
   import TipPage from '$lib/components/TipPage.svelte'
 
   export let pages = []
@@ -33,31 +37,29 @@
   <title>Nice Tips Archive</title>
 </svelte:head>
 
-<Layout wide={true}>
-  <div class="welcome">
-    <p>
-      Welcome to the Tip archive!
-      Whenever somebody <span class="saves">saves</span> a Tip, I bring it here for safekeeping.
-    </p>
-  </div>
+<div class="welcome">
+  <p>
+    Welcome to the Tip archive!
+    Whenever somebody <span class="saves">saves</span> a Tip, I bring it here for safekeeping.
+  </p>
+</div>
 
-  <div class="archive">
-    {#each pages as { docs }}
-      <TipPage
-        {docs}
-      />
-    {/each}
-  </div>
+<div class="archive">
+  {#each pages as { tips }}
+    <TipPage
+      {tips}
+    />
+  {/each}
+</div>
 
-  {#if after}
-  <button
-    on:click={loadNextPage}
-    data-emoji-before='➕'
-    >
-    Load more Tips
-  </button>
-  {/if}
-</Layout>
+{#if after}
+<button
+  on:click={loadNextPage}
+  data-emoji-before='➕'
+  >
+  Load more Tips
+</button>
+{/if}
 
 <style>
   .welcome {

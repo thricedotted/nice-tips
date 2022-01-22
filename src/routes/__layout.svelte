@@ -22,6 +22,6 @@
     margin: auto;
 
     font-size: var(--font-l);
-    max-width: 40ch;
+    max-width: var(--page-max-width, 40ch);
   }
 </style>
