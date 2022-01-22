@@ -24,11 +24,11 @@
       </a>
     </li>
 
-    {#if $page.url.pathname !== '/tips'}
+    {#if $page.url.pathname !== '/archive'}
     <li>
       <a 
         class="all"
-        href="/tips"
+        href="/archive"
         data-emoji-before="📜"
         >Browse Tip archive
       </a>
