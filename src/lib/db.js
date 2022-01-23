@@ -53,8 +53,8 @@ async function createDocument({ text, url }) {
 }
 
 async function getDocumentsByMonthYear({ month, year }) {
-  const start = new Date(year, month - 1).getTime() * 1000
-  const end = new Date(year, month).getTime() * 1000
+  const start = new Date(year, month).getTime() * 1000
+  const end = new Date(year, month + 1).getTime() * 1000
 
   const result = await db.query(
     Paginate(

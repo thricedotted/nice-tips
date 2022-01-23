@@ -38,7 +38,7 @@
 
     <time
       datetime={new Date(ts / 1000).toISOString()}
-      data-emoji-before="📅"
+      data-emoji-before="📆"
       >
       {savedAt}
     </time>

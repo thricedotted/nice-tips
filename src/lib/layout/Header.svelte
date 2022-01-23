@@ -6,7 +6,7 @@
 <h1>
   <a 
     href="/" 
-    on:click={() => invalidate('/tips/generate')}
+    on:click={() => invalidate('/api/generate')}
     >
     The nice robot {$session.headerVerb}...
   </a>

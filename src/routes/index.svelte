@@ -1,6 +1,6 @@
 <script context="module">
   export async function load({ fetch }) {
-    const res = await fetch('/tips/generate')
+    const res = await fetch('/api/generate')
     const data = await res.json()
 
     return {

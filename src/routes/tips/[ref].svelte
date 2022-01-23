@@ -2,7 +2,7 @@
   export async function load({ fetch, params }) {
     const { ref } = params
 
-    const res = await fetch(`/tips/${ref}.json`)
+    const res = await fetch(`/api/${ref}`)
 
     if (res.ok) {
       const data = await res.json()

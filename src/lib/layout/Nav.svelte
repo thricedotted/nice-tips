@@ -10,7 +10,7 @@
         class="generate"
         href="/"
         data-emoji-before="⚡"
-        on:click={() => invalidate('/tips/generate')}
+        on:click={() => invalidate('/api/generate')}
         >Get new Tip
       </a>
     </li>
@@ -24,7 +24,6 @@
       </a>
     </li>
 
-    {#if $page.url.pathname !== '/archive'}
     <li>
       <a 
         class="all"
@@ -33,7 +32,6 @@
         >Browse Tip archive
       </a>
     </li>
-    {/if}
 
   </ul>
 </nav>
