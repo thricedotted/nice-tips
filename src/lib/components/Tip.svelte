@@ -45,7 +45,7 @@
     {:else}
       <form 
         method="POST"
-        action="/tips/save"
+        action="/api/save"
         >
 
         <input

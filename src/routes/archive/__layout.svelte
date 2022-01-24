@@ -34,6 +34,7 @@
     margin: 0;
   }
 
+  /* TODO: just put a clip path with the correct shape on .welcome */
   .welcome::before {
     content: ' ';
     position: absolute;

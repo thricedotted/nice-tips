@@ -63,7 +63,12 @@
       return validateMonthYear(params)    
     }
     catch {
-      return range.end 
+      const { endDate } = range
+
+      return { 
+        year: endDate.getFullYear(),
+        month: endDate.getMonth(),
+      }
     }
   }
 

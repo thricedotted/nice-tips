@@ -1,9 +1,11 @@
 <script context="module">
   export async function load({ fetch }) {
     const searchParams = new URLSearchParams({
-      month: new Date().getMonth() + 1,
+      month: new Date().getMonth(),
       year: new Date().getFullYear()
     })
+
+    console.log(searchParams)
 
     const res = await fetch(`/api/history?${searchParams}`)
     const data = await res.json()

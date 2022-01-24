@@ -20,6 +20,7 @@
 
       const searchParams = new URLSearchParams({ year, month })
 
+    console.log(searchParams)
       const res = await fetch(`/api/history?${searchParams}`)
       const data = await res.json()
 

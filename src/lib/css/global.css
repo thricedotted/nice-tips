@@ -32,7 +32,7 @@ body {
   padding: 2vw;
 }
 
-a, button, summary {
+a, button, .link-button {
   all: unset;
   cursor: pointer;
   padding: 0;

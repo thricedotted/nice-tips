@@ -14,6 +14,10 @@
         maxage: 86400 // one day
       }
     }
+
+    return {
+      status: 500
+    }
   }
 </script>
 

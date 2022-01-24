@@ -1,6 +1,6 @@
 <footer>
   <details>
-    <summary data-emoji-before="ℹ️">About the nice robot</summary>
+    <summary class="link-button" data-emoji-before="ℹ️">About the nice robot</summary>
 
     <dl>
       <dt>What's this now?</dt>
