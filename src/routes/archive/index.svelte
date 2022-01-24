@@ -5,8 +5,6 @@
       year: new Date().getFullYear()
     })
 
-    console.log(searchParams)
-
     const res = await fetch(`/api/history?${searchParams}`)
     const data = await res.json()
 
