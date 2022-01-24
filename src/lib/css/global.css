@@ -43,11 +43,11 @@ a, button, .link-button {
   transition: box-shadow 100ms;
 }
 
-a:hover, button:hover, summary:hover {
+a:hover, button:hover, .link-button:hover {
   box-shadow: inset 0 -1.5em var(--link-accent-color);
 }
 
-a:focus, button:focus, summary:focus {
+a:focus, button:focus, .link-button:focus {
   outline: solid;
 } 
 

@@ -48,8 +48,6 @@
 </script>
 
 <script>
-  import { page } from '$app/stores'
-
   const { startDate, endDate } = range
 
   const calendarYears = Array.from(
@@ -58,58 +56,69 @@
 
   const calendarMonths = Array.from({ length: 12 }, (v, i) => i)
 
-  function getSelected(params) {
-    try {
-      return validateMonthYear(params)    
-    }
-    catch {
-      const { endDate } = range
+  export let pageMonth = endDate.getMonth()
+  export let pageYear = endDate.getFullYear()
 
-      return { 
-        year: endDate.getFullYear(),
-        month: endDate.getMonth(),
-      }
-    }
-  }
-
-  $: selected = getSelected($page.params)
+  let open = true
+  let selectedYear = pageYear
 </script>
 
-<details open>
+<details bind:open>
   <summary 
     data-emoji-before="📅"
     >
-    Archive
-    &mdash;
-    {new Date(selected.year, selected.month).toLocaleString([], { month: 'short', year: 'numeric' })}
+    <h2>
+      Archive
+      &mdash;
+      {new Date(pageYear, pageMonth).toLocaleString([], { month: 'short', year: 'numeric' })}
+    </h2>
+    <span class="toggle-hint">
+      (click to {open ? 'close' : 'open'} calendar)
+    </span>
   </summary>
 
-  {#each calendarYears as year}
   <div 
-    class="year"
-    class:selected={year === selected.year}
+    class="calendar"
+    style:--nYears={calendarYears.length}
     >
-    <h2>{year}</h2>
+    {#each calendarYears as year}
+    <!-- <div 
+      class="year"
+      class:current={year === pageYear.year}
+      > -->
+      <label
+        class="year"
+        class:current={year === pageYear.year}
+        class:selected={year === selectedYear}
+        >
+        <input 
+          type="radio" 
+          bind:group={selectedYear} 
+          value={year}
+        >
+        <span>{year}</span>
+      </label>
 
-    <div class="months">
-      {#each calendarMonths as month}
-        {#if dateIsOutOfBounds({ month, year })}
-          <span class="out-of-bounds">
-            {new Date(year, month).toLocaleString([], { month: 'short' })}
-          </span>
-        {:else}
-          <a 
-            href="/archive/{year}/{`${month + 1}`.padStart(2, '0')}"
-            class="month"
-            class:selected={month === selected.month}
-            >
-            {new Date(year, month).toLocaleString([], { month: 'short' })}
-          </a>
-        {/if}
-      {/each}
-    </div>
+      <div class="months">
+        {#each calendarMonths as month}
+          {#if dateIsOutOfBounds({ month, year })}
+            <span class="out-of-bounds">
+              {new Date(year, month).toLocaleString([], { month: 'short' })}
+            </span>
+          {:else}
+            <a 
+              href="/archive/{year}/{`${month + 1}`.padStart(2, '0')}"
+              class="month"
+              class:current={month === pageYear.month}
+              >
+              {new Date(year, month).toLocaleString([], { month: 'short' })}
+            </a>
+          {/if}
+        {/each}
+      </div>
+    <!-- </div> -->
+    {/each}
   </div>
-  {/each}
 </details>
 
 <style>
@@ -117,31 +126,79 @@
     font-size: var(--font-m);
     position: sticky;
     top: var(--gap);
+    margin-top: var(--big-gap);
     background: var(--bg-color);
     z-index: 1;
 
     background: var(--bg-color);
+    border: 1px solid #ccc;
+    padding: var(--gap);
+  }
+
+  summary {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+
+    cursor: pointer
   }
 
   h2 {
     font: inherit;
+    margin: 0;
+    flex: 1 0 auto;
+
+    font-size: var(--font-s);
+  }
+
+  .toggle-hint {
+    font-size: var(--font-xs);
+  }
+
+  .calendar {
+    display: grid;
+    grid-template-columns: repeat(var(--nYears, 2), auto);
+    gap: var(--gap);
+    margin: var(--gap) 0;
   }
 
   .year {
-    display: flex;
-    align-items: baseline;
-    gap: var(--bigger-gap);
+    grid-row: 1;
   }
 
   .months {
-    flex: 1;
+    grid-row: 2;
+    grid-column: 1 / -1;
+
     display: grid;
     grid-template-columns: repeat(var(--cols, 4), minmax(4ch, 1fr));
   }
 
+  .year:not(.selected) + .months {
+    display: none;
+  }
+
   @media (min-width: 60ch) {
+    .calendar {
+      grid-template-columns: auto 1fr;
+      gap: var(--bigger-gap);
+    }
+
+    .year {
+      grid-row: auto;
+      grid-column: 1;
+      justify-self: left;
+    }
+
     .months {
+      grid-row: auto;
+      grid-column: 2;
       --cols: 6;
+    }
+
+    .year:not(.selected) + .months {
+      display: grid;
     }
   }
 
@@ -151,11 +208,11 @@
     }
   }
 
-  .year.selected h2 {
+  .year.current h3 {
     color: red;
   }
 
-  .year.selected .month.selected {
+  .year.current .month.current {
     color: red;
   }
 

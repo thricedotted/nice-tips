@@ -1,5 +1,23 @@
+<script context="module">
+  export async function load({ params }) {
+    const { month, year } = params
+
+    return {
+      props: {
+        month,
+        year
+      }
+    }
+
+  }
+
+</script>
+
 <script>
   import Calendar from '$lib/components/Calendar.svelte'
+
+  export let month = new Date().getMonth()
+  export let year = new Date().getFullYear()
 </script>
 
 <svelte:head>
@@ -17,7 +35,10 @@
   </p>
 </div>
 
-<Calendar />
+<Calendar 
+  pageMonth={month} 
+  pageYear={year} 
+/>
 
 <slot></slot>
 
