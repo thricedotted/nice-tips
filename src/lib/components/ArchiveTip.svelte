@@ -47,7 +47,7 @@
 <style>
   .tip {
     padding: var(--big-gap) 0 var(--bigger-gap) 0;
-    border-bottom: 0.1rem solid var(--fg-color-lighter);
+    border-bottom: 0.1rem dotted var(--fg-color-lighter);
 
     position: relative;
     margin: auto;
@@ -56,7 +56,10 @@
     display: grid;
     align-items: baseline;
     gap: var(--gap);
+  }
 
+  .tip:last-child {
+    border-bottom-style: solid;
   }
 
   .tip p {

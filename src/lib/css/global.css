@@ -4,6 +4,7 @@
 
 :root {
   --bg-color: #fafafa;
+  --bg-color-dark: #eee;
   --fg-color: #333;
   --fg-color-light: #777;
   --fg-color-lighter: #ccc;

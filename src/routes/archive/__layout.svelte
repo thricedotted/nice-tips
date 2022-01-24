@@ -62,7 +62,7 @@
   .welcome {
     position: relative;
     font-size: var(--font-s);
-    background: #eee;
+    background: var(--bg-color-dark);
     padding: var(--big-gap);
     margin-top: var(--big-gap);
   }
