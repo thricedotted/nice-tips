@@ -1,54 +1,7 @@
-<script context="module">
-  const range = {
-    startDate: new Date(2021, 10),
-    endDate: new Date()
-  }
-
-  function dateIsOutOfBounds({ month, year }) {
-    const date = new Date(year, month)
-    const { startDate, endDate } = range
-
-    return date < startDate || date > endDate
-  }
-
-  export function validateMonthYear({ month, year }) {
-    let intMonth = parseInt(month)
-    let intYear = parseInt(year)
-
-    if (isNaN(intYear)) {
-      throw Error(`${year} is not a number`)
-    }
-
-    else if (isNaN(intMonth)) {
-      throw Error(`${month} is not a number`)
-    }
-
-    else if (intMonth < 1 || intMonth > 12) {
-      throw Error(`${month} is not a valid month number`)
-    }
-
-    const date = new Date(intYear, intMonth)
-    const { startDate, endDate } = range
-
-    if (date < startDate) {
-      intYear = startDate.getFullYear()
-      intMonth = startDate.getMonth() + 1
-    }
-
-    else if (date > endDate) {
-      intYear = endDate.getFullYear()
-      intMonth = endDate.getMonth() + 1
-    }
-
-    return {
-      year: intYear,
-      month: intMonth - 1
-    }
-  }
-</script>
-
 <script>
-  const { startDate, endDate } = range
+  import { dateRange } from '$lib/util'
+
+  const { startDate, endDate } = dateRange
 
   const calendarYears = Array.from(
     { length: endDate.getFullYear() - startDate.getFullYear() + 1 }, 
@@ -56,11 +9,16 @@
 
   const calendarMonths = Array.from({ length: 12 }, (v, i) => i)
 
-  export let pageMonth = endDate.getMonth()
-  export let pageYear = endDate.getFullYear()
+  function dateIsOutOfBounds(date) {
+    return date < dateRange.startDate || date > dateRange.endDate
+  }
+
+  export let pageDate
+  pageDate.year = () => pageDate.getFullYear()
+  pageDate.month = () => pageDate.getMonth()
 
   let open = true
-  let selectedYear = pageYear
+  let selectedYear = pageDate.year
 </script>
 
 <details bind:open>
@@ -70,7 +28,7 @@
     <h2>
       Archive
       &mdash;
-      {new Date(pageYear, pageMonth).toLocaleString([], { month: 'short', year: 'numeric' })}
+      {pageDate.toLocaleString([], { month: 'short', year: 'numeric' })}
     </h2>
     <span class="toggle-hint">
       (click to {open ? 'close' : 'open'} calendar)
@@ -82,13 +40,9 @@
     style:--nYears={calendarYears.length}
     >
     {#each calendarYears as year}
-    <!-- <div 
-      class="year"
-      class:current={year === pageYear.year}
-      > -->
       <label
         class="year"
-        class:current={year === pageYear.year}
+        class:current={year === pageDate.year}
         class:selected={year === selectedYear}
         >
         <input 
@@ -101,22 +55,26 @@
 
       <div class="months">
         {#each calendarMonths as month}
-          {#if dateIsOutOfBounds({ month, year })}
+
+          {@const date = new Date(year, month)}
+          {@const shortMonth = date.toLocaleString([], { month: 'short' })}
+
+          {#if dateIsOutOfBounds(date)}
             <span class="out-of-bounds">
-              {new Date(year, month).toLocaleString([], { month: 'short' })}
+              {shortMonth}
             </span>
           {:else}
             <a 
-              href="/archive/{year}/{`${month + 1}`.padStart(2, '0')}"
+              href="/archive/{year}/{date.toLocaleString([], { month: '2-digit' })}"
               class="month"
-              class:current={month === pageYear.month}
+              class:current={year === pageDate.year && month === pageDate.month}
               >
-              {new Date(year, month).toLocaleString([], { month: 'short' })}
+              {shortMonth}
             </a>
           {/if}
         {/each}
       </div>
-    <!-- </div> -->
+
     {/each}
   </div>
 </details>

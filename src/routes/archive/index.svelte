@@ -1,36 +1,12 @@
 <script context="module">
-  export async function load({ fetch }) {
-    const searchParams = new URLSearchParams({
-      month: new Date().getMonth(),
-      year: new Date().getFullYear()
-    })
+  import { normalizeParams } from './_util'
 
-    const res = await fetch(`/api/history?${searchParams}`)
-    const data = await res.json()
+  export async function load() {
+    const { month, year } = normalizeParams(new Date())
 
     return {
-      props: {
-        pages: [data]
-      }
+      status: 302,
+      redirect: `/archive/${year}/${month}`
     }
   }
 </script>
-
-<script>
-  import TipPage from '$lib/components/TipPage.svelte'
-
-  export let pages = []
-
-</script>
-
-<svelte:head>
-  <title>Nice Tips Archive</title>
-</svelte:head>
-
-<div class="archive">
-  {#each pages as { tips }}
-    <TipPage
-      {tips}
-    />
-  {/each}
-</div>

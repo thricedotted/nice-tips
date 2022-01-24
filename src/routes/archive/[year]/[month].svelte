@@ -1,41 +1,19 @@
 <script context="module">
-  import { validateMonthYear } from '$lib/components/Calendar.svelte'
+  export async function load({ fetch, stuff }) {
+    const { date } = stuff
 
-  export async function load({ fetch, params }) {
-    try {
-      const { month, year } = validateMonthYear(params)
+    const searchParams = new URLSearchParams({ 
+      year: date.getFullYear(), 
+      month: date.getMonth()
+    })
 
-      // normalize month and year in URL
-      const normalized = {
-        month: `${month + 1}`.padStart(2, '0'),
-        year: `${year}`
-      }
+    const res = await fetch(`/api/history?${searchParams}`)
+    const data = await res.json()
 
-      if (params.month !== normalized.month || params.year !== normalized.year) {
-        return {
-          status: 301,
-          redirect: `/archive/${normalized.year}/${normalized.month}`
-        }
-      }
-
-      const searchParams = new URLSearchParams({ year, month })
-
-      const res = await fetch(`/api/history?${searchParams}`)
-      const data = await res.json()
-
-      return {
-        props: {
-          pages: [data],
-          year,
-          month
-        }
-      }
-    }
-
-    catch (error) {
-      return {
-        status: 400,
-        error
+    return {
+      props: {
+        pages: [data],
+        date
       }
     }
   }
@@ -45,12 +23,14 @@
   import TipPage from '$lib/components/TipPage.svelte'
 
   export let pages = []
-  export let year, month
+  export let date = new Date()
 </script>
 
 <svelte:head>
-  <title>Nice Tips Archive &mdash; 
-    {new Date(year, month).toLocaleString([], { month: 'short', year: 'numeric' })}
+  <title>
+    Nice Tips Archive 
+    &mdash; 
+    {date.toLocaleString([], { month: 'short', year: 'numeric' })}
   </title>
 </svelte:head>
 

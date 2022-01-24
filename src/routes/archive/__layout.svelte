@@ -1,23 +1,42 @@
 <script context="module">
-  export async function load({ params }) {
-    const { month, year } = params
+  import { normalizeParams } from './_util'
+  import { monthYearToBoundedDate } from '$lib/util'
 
-    return {
-      props: {
-        month,
-        year
+  export async function load({ fetch, params }) {
+    try {
+      const date = monthYearToBoundedDate(params)
+
+      // normalize month and year in URL
+      const { month, year } = normalizeParams(date)
+
+      if (params.month !== month || params.year !== year) {
+
+        return {
+          status: 301,
+          redirect: `/archive/${year}/${month}`
+        }
       }
+
+      return {
+        stuff: { date },
+        props: { date }
+      }
+
     }
 
+    catch (error) {
+      return {
+        status: 400,
+        error
+      }
+    }
   }
-
 </script>
 
 <script>
   import Calendar from '$lib/components/Calendar.svelte'
 
-  export let month = new Date().getMonth()
-  export let year = new Date().getFullYear()
+  export let date = new Date()
 </script>
 
 <svelte:head>
@@ -35,10 +54,7 @@
   </p>
 </div>
 
-<Calendar 
-  pageMonth={month} 
-  pageYear={year} 
-/>
+<Calendar pageDate={date} />
 
 <slot></slot>
 
