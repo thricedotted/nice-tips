@@ -63,8 +63,8 @@
     position: relative;
     font-size: var(--font-s);
     background: var(--bg-color-dark);
-    padding: var(--big-gap);
-    margin-top: var(--big-gap);
+    padding: var(--gap-l);
+    margin-top: var(--gap-l);
   }
 
   .welcome p {

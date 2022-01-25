@@ -46,7 +46,7 @@
 
 <style>
   .tip {
-    padding: var(--big-gap) 0 var(--bigger-gap) 0;
+    padding: var(--gap-l) 0 var(--gap-xl) 0;
     border-bottom: 0.1rem dotted var(--fg-color-lighter);
 
     position: relative;
@@ -112,7 +112,7 @@
   @media (min-width: 80ch) {
     .tip {
       grid-template-columns: 2fr 1fr;
-      gap: var(--bigger-gap);
+      gap: var(--gap-xl);
     }
 
     .meta {

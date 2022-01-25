@@ -20,8 +20,8 @@
   --font-m: 1rem;
   --font-l: 1.25rem;
 
-  --bigger-gap: 1.4rem;
-  --big-gap: 1rem;
+  --gap-xl: 1.4rem;
+  --gap-l: 1rem;
   --gap: 0.4rem;
   --shim: 0.2rem;
 }

@@ -40,12 +40,12 @@
   nav ul {
     font-size: var(--font-s);
     list-style: none;
-    margin: var(--bigger-gap) 0;
+    margin: var(--gap-xl) 0;
     padding: 0;
   }
 
   nav ul li {
-    margin-bottom: var(--big-gap);
+    margin-bottom: var(--gap-l);
   }
 
   .generate {

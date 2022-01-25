@@ -87,7 +87,7 @@
     font-size: var(--font-s);
     position: sticky;
     top: var(--gap);
-    margin-top: var(--big-gap);
+    margin-top: var(--gap-l);
     background: var(--bg-color);
     z-index: 1;
 

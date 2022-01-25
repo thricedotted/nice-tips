@@ -14,7 +14,7 @@
 
 <style>
   h1 {
-    margin: var(--bigger-gap) 0 0 0;
+    margin: var(--gap-xl) 0 0 0;
     font-size: var(--font-s);
     color: var(--fg-color-light);
     font-weight: bold;

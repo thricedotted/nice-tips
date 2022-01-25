@@ -80,7 +80,7 @@
 
 <style>
   .tip {
-    padding: var(--big-gap) 0 var(--bigger-gap) 0;
+    padding: var(--gap-l) 0 var(--gap-xl) 0;
     border-bottom: 0.1rem solid var(--fg-color-lighter);
   }
 
@@ -109,7 +109,7 @@
   }
 
   .ref {
-    margin-top: var(--bigger-gap);
+    margin-top: var(--gap-xl);
     font-size: var(--font-s);
     color: var(--fg-color);
 

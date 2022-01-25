@@ -34,7 +34,7 @@
   }
 
   details {
-    margin: var(--bigger-gap) 0;
+    margin: var(--gap-xl) 0;
   }
 
   summary {
@@ -43,7 +43,7 @@
 
   dt {
     font-weight: bold;
-    margin-top: var(--big-gap);
+    margin-top: var(--gap-l);
     margin-bottom: var(--shim);
   }
 
