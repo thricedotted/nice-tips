@@ -19,7 +19,7 @@
   $: pageDate.month = pageDate.getMonth()
 
   let open = true
-  let selectedYear = pageDate.year
+  let selectedYear = pageDate.getFullYear()
 </script>
 
 <details bind:open>
@@ -167,7 +167,6 @@
   .month.current {
     font-weight: bold;
     background: var(--bg-color);
-    text-decoration: none;
   }
 
   .months:not(.selected) {
