@@ -43,12 +43,25 @@
       {ref}
     />
   {:else}
-    No tips
+    <p class="no-tips">
+      Ope! Looks like there are no tips saved for this month. <br>
+      But you can <a href="/" data-emoji-before="⚡">generate a new Tip</a>...
+    </p>
   {/each}
 </div>
 
 <style>
   .archive {
     border-bottom: 0.1rem solid var(--fg-color-lighter);
+  }
+
+  .no-tips {
+    font-size: var(--font-m);
+    margin: var(--gap-xl) 0;
+    line-height: 1.8;
+  }
+
+  .no-tips a {
+    font-weight: bold;
   }
 </style>
