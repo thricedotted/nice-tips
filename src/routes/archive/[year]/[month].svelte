@@ -25,7 +25,10 @@
   export let tips = []
   export let date = new Date()
 
+  let ascending = true
+
   $: dateString = date.toLocaleString([], { month: 'short', year: 'numeric' })
+  $: orderedTips = ascending ? tips : [...tips].reverse()
 </script>
 
 <svelte:head>
@@ -37,7 +40,22 @@
 </svelte:head>
 
 <div class="archive">
-  {#each tips as { text, ts, url, ref } (ref)}
+  {#if tips.length > 0}
+  <p class="sort">
+    Sort from
+    <button
+      on:click={() => ascending = !ascending}
+      >
+      {#if ascending}
+      oldest &rarr; newest
+      {:else}
+      newest &rarr; oldest
+      {/if}
+    </button>
+  </p>
+  {/if}
+
+  {#each orderedTips as { text, ts, url, ref } (ref)}
     <ArchiveTip
       {text}
       {ts}
@@ -65,6 +83,11 @@
 <style>
   .archive {
     border-bottom: 0.1rem solid var(--fg-color-lighter);
+  }
+
+  .sort {
+    font-size: var(--font-s);
+    --link-accent-color: var(--fg-color-lighter);
   }
 
   .end, .no-tips {
