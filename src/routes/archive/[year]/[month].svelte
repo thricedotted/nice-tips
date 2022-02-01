@@ -24,13 +24,15 @@
 
   export let tips = []
   export let date = new Date()
+
+  $: dateString = date.toLocaleString([], { month: 'short', year: 'numeric' })
 </script>
 
 <svelte:head>
   <title>
     Nice Tips Archive 
     &mdash; 
-    {date.toLocaleString([], { month: 'short', year: 'numeric' })}
+    {dateString}
   </title>
 </svelte:head>
 
@@ -44,10 +46,20 @@
     />
   {:else}
     <p class="no-tips">
-      Ope! Looks like there are no tips saved for this month. <br>
+      Ope! Looks like there are no tips saved for {dateString}. <br>
       But you can <a href="/" data-emoji-before="⚡">generate a new Tip</a>...
     </p>
   {/each}
+
+  {#if tips.length > 0}
+    <p 
+      class="end"
+      data-emoji-before="🔚"
+      data-emoji-after="🆒"
+      >
+      That's all for {dateString}!
+    </p>
+  {/if}
 </div>
 
 <style>
@@ -55,13 +67,20 @@
     border-bottom: 0.1rem solid var(--fg-color-lighter);
   }
 
-  .no-tips {
-    font-size: var(--font-m);
-    margin: var(--gap-xl) 0;
+  .end, .no-tips {
+    background: var(--bg-color-dark);
+
+    font-size: var(--font-s);
+    font-style: italic;
     line-height: 1.8;
+    text-align:  center;
+
+    padding: var(--gap-l);
+    margin-top: var(--gap-l);
   }
 
   .no-tips a {
     font-weight: bold;
+    font-style: normal;
   }
 </style>
