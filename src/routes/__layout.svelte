@@ -1,5 +1,6 @@
 <script>
   import '$lib/css/global.css'
+  import '$lib/css/space-mono.css'
 
   import { Header, Nav, Footer } from '$lib/layout'
 </script>
