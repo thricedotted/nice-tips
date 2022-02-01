@@ -48,7 +48,7 @@ a:hover, button:hover, .link-button:hover {
   box-shadow: inset 0 -1.5em var(--link-accent-color);
 }
 
-a:focus, button:focus, .link-button:focus {
+a:focus, button:focus, .link-button:focus, summary:focus {
   outline: solid;
 } 
 
