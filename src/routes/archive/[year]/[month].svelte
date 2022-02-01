@@ -8,11 +8,11 @@
     })
 
     const res = await fetch(`/api/history?${searchParams}`)
-    const data = await res.json()
+    const { tips } = await res.json()
 
     return {
       props: {
-        pages: [data],
+        tips,
         date
       }
     }
@@ -20,9 +20,9 @@
 </script>
 
 <script>
-  import TipPage from '$lib/components/TipPage.svelte'
+  import ArchiveTip from '$lib/components/ArchiveTip.svelte'
 
-  export let pages = []
+  export let tips = []
   export let date = new Date()
 </script>
 
@@ -35,9 +35,20 @@
 </svelte:head>
 
 <div class="archive">
-  {#each pages as { tips }}
-    <TipPage
-      {tips}
+  {#each tips as { text, ts, url, ref } (ref)}
+    <ArchiveTip
+      {text}
+      {ts}
+      {url}
+      {ref}
     />
+  {:else}
+    No tips
   {/each}
 </div>
+
+<style>
+  .archive {
+    border-bottom: 0.1rem solid var(--fg-color-lighter);
+  }
+</style>

@@ -59,7 +59,7 @@
   }
 
   .tip:last-child {
-    border-bottom-style: solid;
+    border-bottom: none;
   }
 
   .tip p {

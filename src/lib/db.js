@@ -58,13 +58,16 @@ async function getDocumentsByMonthYear({ month, year }) {
 
   const result = await db.query(
     Paginate(
-      Range(Match(Index('time-id')), start, end)
+      Range(Match(Index('time-id')), start, end),
+      { size: 500 }
     )
   )
 
   return {
     tips: result.data.map(
-      ([ ts, ref, text, url ]) => { return { ts, ref, text, url } }
+      ([ ts, ref, text, url ]) => { 
+        return { ts, ref, text, url } 
+      }
     )
   }
 }
