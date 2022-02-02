@@ -23,16 +23,19 @@
 
 <script>
   import Tip from '$lib/components/Tip.svelte'
+  import SEO from '$lib/components/SEO.svelte'
 
   export let ref, text, ts, url
 </script>
 
 <svelte:head>
   <title>&ldquo;{text}&rdquo; &mdash; Nice Tips Bot</title>
-
-  <meta property="og:title" content="Nice Tips Bot">
-  <meta property="og:description" content="{text}">
 </svelte:head>
+
+<SEO 
+  title="Nice Tips Bot"
+  description={text}
+/>
 
 <Tip 
   {ref}

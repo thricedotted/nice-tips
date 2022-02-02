@@ -21,6 +21,7 @@
 
 <script>
   import ArchiveTip from '$lib/components/ArchiveTip.svelte'
+  import SEO from '$lib/components/SEO.svelte'
 
   export let tips = []
   export let date = new Date()
@@ -35,10 +36,12 @@
   <title>
     Nice Tips Archive &mdash; {dateString}
   </title>
-
-  <meta property="og:title" content="Nice Tips Bot - {dateString}">
-  <meta property="og:description" content="The Nice Tips Archive from {dateString}.">
 </svelte:head>
+
+<SEO 
+  title="Nice Tips Bot - {dateString}"
+  description="The Nice Tips Archive from {dateString}."
+/>
 
 <div class="archive">
   {#if tips.length > 0}
