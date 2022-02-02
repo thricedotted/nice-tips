@@ -19,6 +19,9 @@
 
 <svelte:head>
   <title>&ldquo;{text}&rdquo; &mdash; Nice Tips Bot</title>
+
+  <meta property="og:title" content="Nice Tips Bot">
+  <meta property="og:description" content="The nice robot has some advice for you...">
 </svelte:head>
 
 <Tip 

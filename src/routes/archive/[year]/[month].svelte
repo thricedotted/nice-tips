@@ -33,10 +33,11 @@
 
 <svelte:head>
   <title>
-    Nice Tips Archive 
-    &mdash; 
-    {dateString}
+    Nice Tips Archive &mdash; {dateString}
   </title>
+
+  <meta property="og:title" content="Nice Tips Bot - {dateString}">
+  <meta property="og:description" content="The Nice Tips Archive from {dateString}.">
 </svelte:head>
 
 <div class="archive">
