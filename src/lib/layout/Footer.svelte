@@ -18,7 +18,7 @@
       <dt>Who made this?</dt>
       <dd>
         Me! I'm li zi, aka <a href="https://twitter.com/thricedotted">@thricedotted</a>. 
-        <!-- If you like Nice Tips Bot, check out some of my other generative text toys. -->
+        You can check out other web toys I've made on my website, <a href="https://entangled.one">entangled.one</a>.
       </dd>
     </dl>
 
