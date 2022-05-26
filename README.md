@@ -1,3 +1,11 @@
+# Nice Tips
+
+Website rewrite of an old Twitter bot I once ran. Built with SvelteKit, data storage on Fauna, hosted on Vercel.
+
+I wrote a few aspects of this project up in my portfolio: https://dev.entangled.one/projects/nice-tips
+
+---
+
 # create-svelte
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte);
