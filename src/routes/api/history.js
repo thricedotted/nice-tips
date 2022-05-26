@@ -3,10 +3,10 @@ import { getDocumentsByMonthYear } from '$lib/db'
 export async function get({ url }) {
   const { searchParams } = url
 
-  const docs = await getDocumentsByMonthYear({
-    month: parseInt(searchParams.get('month')),
-    year: parseInt(searchParams.get('year')),
-  })
+  const month = parseInt(searchParams.get('month'))
+  const year = parseInt(searchParams.get('year'))
+
+  const docs = await getDocumentsByMonthYear({ month, year })
 
   const currentMonth = (new Date()).getMonth() + 1
 
