@@ -11,7 +11,9 @@
         props: {
           ...data
         },
-        maxage: 86400 // one day
+        cache: {
+          maxage: 604800
+        }
       }
     }
 

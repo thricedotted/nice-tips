@@ -8,7 +8,14 @@ export async function get({ url }) {
     year: parseInt(searchParams.get('year')),
   })
 
+  const currentMonth = (new Date()).getMonth() + 1
+
+  const headers = month !== currentMonth
+                  ? { 'Cache-Control': 's-maxage=604800, immutable' }
+                  : {}
+
   return {
+    headers,
     body: docs
   }
 }

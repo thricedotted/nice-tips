@@ -7,7 +7,7 @@ export async function get({ params }) {
 
   return {
     headers: {
-      'Cache-Control': 'max-age=86400, s-maxage=604800'
+      'Cache-Control': 's-maxage=604800, immutable'
     },
 
     body: {
